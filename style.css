@@ -1,3 +1,16 @@
+:root {
+  --primary-color: #000;
+  --secondary-color: #666666;
+  --background-color: #fafafa;
+  --text-color: #333;
+
+  --passionate-red: #ff003b;
+  --eternal-gold: #e3a535;
+  --white: #ffffff;
+  --black: #000000;
+  --blue: #0339f8;
+}
+
 /* —— basic reset —— */
 * {
   box-sizing: border-box;
@@ -11,6 +24,7 @@ body {
   color: #333;
   display: flex;
   justify-content: center;
+  background: var(--black);
 }
 
 .page-wrapper {
@@ -22,28 +36,71 @@ body {
 .site-header {
   text-align: center;
   padding-top: 50px;
+  display: flex;              /* Add this */
+  flex-direction: column;     /* Stack children vertically */
+  align-items: center;   
+  background-color: var(--white);     /* Center children horizontally */
+  border-left: 5px solid var(--passionate-red);
+  border-right: 5px solid var(--passionate-red);
+  border-bottom: 5px solid var(--passionate-red);
+  border-top: 5px solid var(--passionate-red);
+  margin-top: 30px;
 }
 
-.site-title {
-  font-size: 22px;
-  font-weight: 500;
+.logo {
+  display: inline-block;
+  width: 200px;
+  height: auto;
+  background: url("logo.png") no-repeat center center;
+  background-size: contain;
   margin-bottom: 10px;
 }
 
-/* chat window */
-.chatbox {
-  margin: 40px 0;
+.site-title {
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--eternal-gold);
+}
+
+.material-symbols-outlined {
+  background: url("robot-icon.png") no-repeat center center;
+  background-size: contain;
+  display: inline-block;
+  font-size: 150px !important; /* Makes Material Icon larger */
+  width: 150px;
+  height: auto;
+  color: var(--passionate-red);
+  vertical-align: center;
 }
 
 .chat-window {
   height: 360px;
-  border: 1px solid #000;
+  border-left: 5px solid var(--passionate-red);
+  border-right: 5px solid var(--passionate-red);
+  border-bottom: 5px solid var(--passionate-red);
+  border-top: none;
   padding: 20px;
   font-size: 18px;
   line-height: 1.5;
   overflow-y: auto;
-  background: #fafafa;
   white-space: pre-line;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.chat-window .windowPlaceholder {
+  color: var(--eternal-gold);
+  font-style: italic;
+  margin-top: 20px;
+}
+
+#latestQA {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border: 1px solid var(--eternal-gold);
 }
 
 /* messages */
@@ -53,11 +110,11 @@ body {
 }
 
 .msg.user {
-  color: #000;
+  color: var(--eternal-gold);
 }
 
 .msg.ai {
-  color: #666666;
+  color: var(--blue);
 }
 
 /* input row */
@@ -72,16 +129,26 @@ body {
   padding: 12px;
   border: 1px solid #ccc;
   font-size: 18px;
+  background-color: var(--passionate-red);
+  color: var(--white);
+}
+
+.chat-form input::placeholder {
+  color: var(--white); /* Change this to any color you like */
+  opacity: 1; /* Makes sure the color is solid */
 }
 
 .chat-form input:focus {
-  outline: 2px solid #000;
+  outline: 2px solid var(--blue);
   outline-offset: 2px;
+  background-color: var(
+    --blue
+  ); /* Add to this line to change input field's background on focus */
 }
 
 .chat-form button {
   font-size: 18px;
-  background: #000;
+  background: var(--passionate-red);
   color: #fff;
   border: none;
   padding: 12px;
@@ -91,20 +158,26 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
+  /* Add a "pressed" effect when the button is active */
+  transition: background 0.3s, transform 0.08s;
 }
 
 .chat-form button .material-icons {
   font-size: 24px;
 }
 
-.chat-form button:hover {
-  background: #666666;
+.chat-form button .material-icons:hover {
+  color: var(--eternal-gold);
 }
 
-.chat-form button:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+.chat-form button:hover {
+  background: var(--blue);
+  color: var(--eternal-gold);
+}
+
+.chat-form button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
 }
 
 /* visually hidden */
